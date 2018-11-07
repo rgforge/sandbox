@@ -23,11 +23,16 @@ def multiplying():
 	print('The answer is %d.' % b)
 
 def dividing():	
-	x = int(input('What is the dividend?   '))
-	y = int(input('What is the divisor?   '))
-	z = x//y
-	r = x%y
-	print(f'The quotient is {z} and the remainder is {r}')
+	try:
+		x = int(input('What is the dividend?   '))
+		y = int(input('What is the divisor?   '))
+		z = x//y
+		r = x%y
+		print(f'The quotient is {z} and the remainder is {r}')
+	except:
+		print("You can't divide by ZERO.")
+	else:
+		pass
 
 def sq_root():
 	x = int(input('What number would you like the square root of?   '))
@@ -68,8 +73,21 @@ def fact():
 			return x * factl(x-1)
 	print(f'The factorial of {x} is {factl(x)}.')
 
-#def inverse():
-
+def inverse():
+	#try:
+		inv_question = (input('Press 1 for an additive inverse of the number. Press 2 for the multiplicative inverse or reciprocal.   '))
+		if inv_question == '1':
+			x = int(input('What is the number you would like the additive inverse of?   '))
+			print(f'The additive inverse of {x} is {-x}.')
+		elif inv_question == '2':
+			x = int(input('What is the number you would like the multiplicative inverse or reciprocal of?   '))
+			print(f'The multiplicative inverse of {x} is {round((1/x), 2)}.')
+		else:
+			print('You must enter 1 or 2.')
+			inverse()
+	#except:
+	#	print('wrong')
+	
 def mod():
 	x = int(input('What is the first number you want to find the divide?   '))
 	y = int(input('What is the number you to divide by?   '))
@@ -115,7 +133,7 @@ def opening():
 	elif x == 11:
 		fact()
 	elif x == 12:
-		print('Still working...')
+		inverse()
 	elif x == 13:
 		mod()
 	else:
@@ -124,11 +142,14 @@ def opening():
 
 
 opening()
-ans = input('Would you like another calculation? Y for yes.  Any key for no.   ')
-if ans.lower() == 'y':
-	opening()
-else:
-	print("Run program again when you are ready")
+
+while True:
+	ans = input('Would you like another calculation? Y for yes.  Any key for no.   ')
+	if ans.lower() == 'y':
+		opening()
+	else:
+		print("Run program again when you are ready")
+		break
 
 
 
